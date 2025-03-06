@@ -1,0 +1,36 @@
+<h2>Trams Departing Table</h2>
+<table mat-table [dataSource]="trams" class="mat-elevation-z8">
+  <ng-container matColumnDef="line">
+    <th mat-header-cell *matHeaderCellDef> Line </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.line }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="scheduled">
+    <th mat-header-cell *matHeaderCellDef> Scheduled </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.scheduled  | date : 'dd-MM-yyyy hh:mm:ss'  }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expected">
+    <th mat-header-cell *matHeaderCellDef> Expected </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.expected  | date : 'dd-MM-yyyy hh:mm:ss'  }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="display">
+    <th mat-header-cell *matHeaderCellDef> Expected Timing </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.display === 'Nu' ? 'Arrived' : tram.display }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="destination">
+    <th mat-header-cell *matHeaderCellDef> Destination </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.destination }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef> State </th>
+    <td mat-cell *matCellDef="let tram"> {{ tram.state }} </td>
+  </ng-container>
+  
+
+  <tr mat-header-row *matHeaderRowDef="['line', 'scheduled', 'expected', 'display', 'destination', 'state']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['line', 'scheduled', 'expected', 'display', 'destination', 'state'];"></tr>
+</table>
